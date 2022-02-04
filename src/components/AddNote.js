@@ -1,21 +1,22 @@
 import { useState } from "react";
 
-const AddNote = ({ handleAddNote}) => {
-  const [noteText,  setNoteText] = useState("");
+const AddNote = ({ handleAddNote }) => {
+  const [noteText, setNoteText] = useState("");
 
   const handleChange = (e) => {
-      setNoteText(e.target.value)
-   /*  console.log(event.target.value); */
+    setNoteText(e.target.value);
+    /*  console.log(e.target.value); */
   };
 
   const handleSaveClick = () => {
+    if (noteText.trim().length > 0) {
       handleAddNote(noteText);
-  }
-
+    }
+  };
 
   return (
     <div className="note new">
-      <textarea 
+      <textarea
         rows="8"
         cols="10"
         placeholder="Type to add a note ..."
@@ -24,7 +25,9 @@ const AddNote = ({ handleAddNote}) => {
       ></textarea>
       <div className="note-footer">
         <small> 200 Remaining</small>
-        <button className="save" onClick={handleSaveClick}>Save</button>
+        <button className="save" onClick={handleSaveClick}>
+          Save
+        </button>
       </div>
     </div>
   );
