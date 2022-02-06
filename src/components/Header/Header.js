@@ -4,7 +4,7 @@ import "./styles.css";
 export default function Header({ handleToggleDarkMode }) {
   return (
     <div className="header">
-      <h1>My Notes</h1>
+      <h1>My notes</h1>
       <button onClick={() => handleToggleDarkMode(
         (previousDarkMode) => !previousDarkMode
         )
