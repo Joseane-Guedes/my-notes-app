@@ -1,10 +1,12 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
-import NotesList from "./components/NotesList";
-import Search from "./components/Search";
+import Header from "./components/Header/Header";
+import NotesList from "./components/NotesList/NotesList";
+import Search from "./components/Search/Search";
+import "./global.css";
 
-const App = () => {
+
+export default function App() {
   const [notes, setNotes] = useState([
     {
       id: nanoid(),
@@ -30,7 +32,7 @@ const App = () => {
 
   const [searchText, setSearchText] = useState(' ');
 
-  const [darkMode, setDarkMode] = useState('false');
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const savedNotes = JSON.parse(
@@ -66,23 +68,22 @@ const App = () => {
 
 
   return (
-    <div className={`${darkMode && ' dark-mode'
-      }`}>
-      <div className="container">
-        <Header handleToggleDarkMode={setDarkMode} />
-        <Search
-          handleSearchNote={setSearchText}
-        />
-        <NotesList
-          notes={notes.filter((note) =>
-            note.text.toLowerCase().includes(searchText)
-          )}
-          handleAddNote={addNote}
-          handleDeleteNote={deleteNote}
-        />
-      </div>
-    </div>
+    < div className={`${darkMode && 'dark-mode'}`}>   
+     <div className="container">
+    <Header handleToggleDarkMode={setDarkMode} />
+    <Search
+      handleSearchNote={setSearchText}
+    />
+    <NotesList
+      notes={notes.filter((note) =>
+        note.text.toLowerCase().includes(searchText)
+      )}
+      handleAddNote={addNote}
+      handleDeleteNote={deleteNote}
+    />
+  </div>
+  </div>
+
   );
 };
 
-export default App;
