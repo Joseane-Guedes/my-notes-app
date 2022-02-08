@@ -1,6 +1,6 @@
 # My Note App
 
-### Manage your notes. Add, view, search or delete them easily.
+<p> Manage your notes. Add, view, search or delete them easily.</p>
 
 # 🎨 Layout
 
